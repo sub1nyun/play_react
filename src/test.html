@@ -61,6 +61,33 @@
     const d5 = a5.map((i) => i+10);
     console.log(d5); // [11, 12, 13]
 
+    const data = {name:"이걸로바꿔"};
+    const a6 = { id:1, name:"홍길동"};
+    const b6 = {...a6, name:"임꺽정"}; // 수정방법 -> 덮어 씌우면 됨 -> 새로운 배열
+    console.log(a6);
+    console.log(b6);
+    const c6 = {...a6, ...data}; // data를 흩뿌리기하면 덮어씌움 -> 새로운 배열
+    // ▲ 데이터가 한 건이라면 쉽게 수정이 가능
+    
+    const users = [
+        {id:1, name:"테스터", phone:"1111"},
+        {id:2, name:"이스터", phone:"2222"},
+        {id:3, name:"삼스터", phone:"3333"},
+    ];
+
+    const updateUserDto = {
+        id:2, name:"홍길동"
+    };
+// users[1].name = updateUserDto.name; 원래 값이 바뀜 -> 최적화 x 
+
+// 필터 x -> 나머지 것들이 사라져버림 -> map()을 이용해서 일단 모두 출력 후 id가 2인것만
+
+const newUsers = users.
+map(u => u.id === updateUserDto.id ? {...u, ...updateUserDto} : u); // const newUser = {...users}
+ // ▲ 데이터가 여러건 중 하나라면 특정 조건이 맞는다면 변경해주기
+console.log("newUsers", newUsers);
+
+
 
 </script>
 
