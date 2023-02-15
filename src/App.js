@@ -1,38 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Sub from './Sub';
 
-// 1. 실행과정
-// 2. 문법 
-
-// return은 하나의 Dom만 리턴 할 수 있음
-// 변수 선언은 let 혹은 const로 하는것을 권장
-// js jsx에 넣으려면 {}를 사용해야함
-// jsx 안에서는 if문 사용이 불가능함 -> 삼항연산자를 사용 지원
-// 조건부 렌더링 && -> false가 없기때문에 true면 보여줌 아니면 렌더링 안 함
-// css 디자인 방법 크게 2가지있음
-// css -1 내부에 적는 방법
-// css -2 외부 파일에 적고 불러오기
-// css -3 번외로 라이브러리 사용(부트스트랩, component-styled)
-// css -> class가 아니라 className 이라고 명칭 지정해야함
-
-let a = 10; // 변수
-const b = 20; // 상수
-
+// <button onClick={add()}>더하기</button> ()를 넣으면 실행하라는 의미 
+// onClick시에 함수가 실행될 수 있도록 바인딩만 해야함
 function App() {
-  let c; 
-  let d = undefined; // 정의 되지 않은 값을 의미함 => null과 유사함
 
-  let list = [1,2,3];
 
-  console.log(1,c);
+//  let number = 1; // 상태 값이 아님
+const [number, setNumber] = useState(2); // React안에 hooks 라이브러리 사용
+// number라는 변수가 생김 -> 변수를 변경하기 위해서는 setNumber를 통해야함 
+// 1이 -> number로 -> 값 변경은 setNumber로
+  const add = () => {
+    setNumber(number+1); // ++은 자기한테 다시 값을 할당하는 것이기에 x 
+    // 리엑트에게 number 값 변경하도록 요청하는것 -> 리엑트가 내부적으로 변경함
+    // 일반적인 변수 변경은 UI가 렌더링이 되지 않음 -> 상태 값으로 넘겨줘야 리턴
+    console.log('add', number);
+  }
+
+  // 랜더링 시점 = 상태값 변경
   return (
     <div>
-    <div className='box-style'> 
-      반갑다 {a === 10 ? '텐' : '아님'}
-    </div>
-    <h1>하나에 태그에 넣어야함 {b === 20 && '20이다 이말이야'}련아</h1>
-    <hr/>
-    <div>{list.map((n)=> n)}</div> 
+      <h1>숫자 : {number}</h1>
+      <button onClick={add}>더하기</button>
+      <Sub/>
     </div>
   );
 }
