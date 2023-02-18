@@ -1,0 +1,35 @@
+import logo from './logo.svg';
+import './App.css';
+import { useState } from 'react';
+
+
+function App() {
+
+  console.log('실행 됨');
+
+  let sample = [
+    {id:1, name:"홍길동"},
+    {id:2, name:"임꺽정"},
+    {id:3, name:"장보고"},
+    {id:4, name:"김지훈"},
+  ];
+
+  // 다운로드 받았다는 조건
+  const [users, setUsers] = useState(sample);
+
+  const download = () => {
+    sample.push({id:5, name:"조자룡"})
+    console.log(sample);
+    setUsers([...sample]); // 상태 값이 변경됨 -> 레퍼런스가 변경되어야 동작함
+    // 리렌더링에 조건 -> 깊은 복사
+  };
+  
+  return (
+    <div>
+      <button onClick={download}>다운로드</button>
+      {users.map(u=> <h1>{u.id}, {u.name}</h1>)}
+    </div>
+  );
+}
+
+export default App;
