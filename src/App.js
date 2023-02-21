@@ -1,49 +1,29 @@
 import logo from './logo.svg';
 import './App.css'; 
-import { useState } from 'react';
-import { useMemo } from 'react';
-
-// useMemo => 메모라이제이션(기억)
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 function App() {
+  const inputRef = useRef();
 
-  const [list, setList] = useState([1,2,3,4]);
-  const [str, setStr] = useState("합계");
+  useEffect(() => {
+   // console.log(inputRef);
+   inputRef.current.focus();
+  }, []);
 
-  const [isKorea, setIsKorea] = useState(true);
-
-  const location = useMemo(() => {
-    return { // 오브젝트 넣음  -> {}
-      country : isKorea ? '한국' : '외국'
-    };
-  }, [isKorea]) // useEffect 에서 오래걸리는 작업을 한다면  필요할때만 호출되게 하기
-
-
-
-  const getAddResult = () => {
-    let sum = 0;
-    list.forEach(i => sum = sum + i); // 한 줄이면 {} 필요 없음 -> 리턴을 안 해도 됨
-    console.log(sum);
-    return sum; // 리턴해주면 화면에 찍힘
+  const login = () => {
+    alert(`환영합니다 ${inputRef.current.value}!`);
+    //로그인을 마친 후 다시 포커스
+    inputRef.current.focus();
   }
-
- // const addResult = useMemo(()=>getAddResult(), [list]); //기억할 함수를 지정
-                                 // ▲ { } 생략을 통해서 return문 생략
- const addResult = useMemo(() => {
-  return getAddResult()
- }, [list]);
-
+  //input의 밸류를 얻을때, e.target.value 뿐만 아니라 
+  //useRef를 써서 inputRef.current.value로
   return (
     <div>
-      <button onClick={() => {setStr("안녕")}}>문자 변경</button>
-      <button onClick={() => {setList([...list, 10])}}>리스트값 추가</button>
-      <div>
-        {list.map(i => <h1>{i}</h1>)}
-      </div>
-      <div>{str} : {addResult}</div>
+      <input ref={inputRef} type="text" placeholder='username'/>
+      <button onClick={login}>로그인</button>
     </div>
   );
 }
-
 export default App; 
 
