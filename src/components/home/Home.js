@@ -7,7 +7,13 @@ import styled from 'styled-components';
 // 스타일 컴포넌트는 함수 밖에
 // 부모로부터 받은 props와 내부 props가 다름 
 const StyledDeleteButton = styled.button`
-color: ${(props) => (props.user.username === 'ssar' ? "blue" : "red")};
+    color: ${(props) => (props.user.username === 'ssar' ? "blue" : "red")};
+`;
+
+// 스타일 상속 -> 확장
+const StyledAddButton = styled(StyledDeleteButton)`
+// color 상속 받음
+    background-color: green;
 `;
 
 
@@ -18,9 +24,12 @@ const Home = (props) => {
     // 구조분할 할당
     const {boards, setBoards, number, setNumber, user} = props; // props의 boards가 자동으로 들어감 key 값과 동일해야함
 
+//<StyledDeleteButton user={user} onClick={() => setBoards([])}>전체 삭제</StyledDeleteButton>
+//                        ▲ Passing 
 
     return (
         <div>
+            <StyledAddButton user={user}>더하기</StyledAddButton>
             <h1>홈:{number}</h1>
             <h2>뭐임:{user.username}</h2>
             <button onClick={() => setNumber(number+1)}>번호증가</button>

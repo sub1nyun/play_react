@@ -1,8 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 import Home from '../components/home/Home';
 
 const HomePage = () => {
@@ -27,11 +25,7 @@ const HomePage = () => {
 
     // <Home boards={boards}/> -> props(속성) 라고 하며 -> 데이터 넘기기
     return (
-        <div>
-            <Header/>
             <Home boards={boards} setBoards={setBoards} number={number} setNumber={setNumber} user={user}/> 
-            <Footer/>
-        </div>
     );
 };
 
