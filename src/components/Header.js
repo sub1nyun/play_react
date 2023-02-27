@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledHeaderButtonDiv = styled.div`
@@ -12,6 +13,8 @@ const Header = () => {
     return (
         <StyledHeaderButtonDiv backgroundColor={"blue"}>
             <ul>
+                <li><Link to="/">홈</Link></li>
+                <li><Link to="/login">로그인</Link></li>
                  <li>메뉴 1</li>
                  <li>메뉴 2</li>
              </ul>    
