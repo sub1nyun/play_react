@@ -1,7 +1,10 @@
 import React from 'react';
 import Login from '../components/login/Login';
+import { useParams } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({match}) => {
+   // const { userId } = match.params;
+
     return (
             <Login/>
     );

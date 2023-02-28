@@ -14,7 +14,7 @@ const Header = () => {
         <StyledHeaderButtonDiv backgroundColor={"blue"}>
             <ul>
                 <li><Link to="/">홈</Link></li>
-                <li><Link to="/login">로그인</Link></li>
+                <li><Link to="/login/10">로그인</Link></li>
                  <li>메뉴 1</li>
                  <li>메뉴 2</li>
              </ul>    

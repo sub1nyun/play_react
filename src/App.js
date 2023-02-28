@@ -8,13 +8,14 @@ import { Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 
 // route 페이지가 변하는 것이 아닌 객체를 바꿔치는 것
+// 6v -> exact 옵션 삭제 됐음 -> 하위 경로에 여러 라우팅 매칭시키고 싶다면 url/* 사용
 function App() {
   return (
     <div>
       <Header/>
           <Routes>
               <Route path="/" exact={true} element={<HomePage/>}/>
-              <Route path="/login" exact={true} element={<LoginPage/>}/> 
+              <Route path="/login/:id" exact={true} element={<LoginPage/>}/> 
           </Routes>
       <Footer/>
     </div>  
