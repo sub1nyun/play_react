@@ -4,8 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // npm react-router-dom 설치 후 <App/>을 <BrowserRouter>로 감쌌음
+// BrowserRouter 라우터를 임포트 했으니 App 등 다른 컴포넌트에서는 import할 필요 없음
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,3 +1,4 @@
+import { Button } from 'react-bootstrap';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -29,6 +30,7 @@ const Home = (props) => {
 
     return (
         <div>
+            <Button variant="primary">Primary</Button>
             <StyledAddButton user={user}>더하기</StyledAddButton>
             <h1>홈:{number}</h1>
             <h2>뭐임:{user.username}</h2>
