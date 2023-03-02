@@ -10,11 +10,7 @@ import WritePage from './pages/WritePage';
 const Edti = () => {
     return (
         <div>
-            <Navigation/>
-            <Routes>
-                <Route path="/" element={<ListPage/>} />
-                <Route path="/write" element={<WritePage/>} />
-            </Routes>
+            <ListPage/>
         </div>
     );
 };
